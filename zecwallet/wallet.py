@@ -18,6 +18,10 @@ class Wallet():
 
 
 	def communicate(self , command):
+		'''
+		Send a custom command directly to zecwallet
+		'''
+
 		for i in range(3):
 			self._sendCommand(command)
 			commandResults = self._fetchResult()
@@ -337,6 +341,8 @@ class Wallet():
 	def quit(self):
 		'''
 		Save the wallet to disk and quit
+
+		Destroys the wallet instance
 		'''
 
 		self.__del__()
