@@ -19,7 +19,7 @@ Zecwallet-Python is a simple wrapper around the Zecwallet Command Line LightClie
 
 # Installation
 
-To use Zecwallet-Python, you will need to install [Zecwallet Command Line LightClient]([Releases · adityapk00/zecwallet-light-cli · GitHub](https://github.com/adityapk00/zecwallet-light-cli/releases)) first. You can do this by downloading their latest release, unzipping it, and then making note of the filepath to the `zecwallet-cli` executable on your system.
+To use Zecwallet-Python, you will need to install [Zecwallet Command Line LightClient](https://github.com/adityapk00/zecwallet-light-cli/releases) first. You can do this by downloading their latest release, unzipping it, and then making note of the filepath to the `zecwallet-cli` executable on your system.
 
 ###### Note: The latest version of Zecwallet to be tested for full compatibility with Zecwallet-Python is v1.7.7
 
@@ -30,13 +30,13 @@ wget https://github.com/adityapk00/zecwallet-light-cli/releases/download/v1.7.7/
 unzip /tmp/zecwallet.zip -d /home/ubuntu/ZcashWallet
 ```
 
-Next, you will need to install Zecwallet-Python, which can by done using [pip]([pip · PyPI](https://pypi.org/project/pip/)):
+Next, you will need to install Zecwallet-Python, which can by done using [pip](https://pypi.org/project/pip/):
 
 ```bash
 pip3 install zecwallet
 ```
 
-Alternatively, you may copy the `wallet.py` file from [our GitHub repository]([Zecwallet-Python/wallet.py at main · P5vc/Zecwallet-Python · GitHub](https://github.com/P5vc/Zecwallet-Python/blob/main/zecwallet/wallet.py)), and import that locally into your project.
+Alternatively, you may copy the `wallet.py` file from [our GitHub repository](https://github.com/P5vc/Zecwallet-Python/blob/main/zecwallet/wallet.py), and import that locally into your project.
 
 # Usage
 
@@ -51,7 +51,7 @@ Once you've instantiated your wallet, you'll have access to all of the following
 
 ###### Note that, as a wrapper, the descriptions, functionality, and returned results are nearly identical to those provided by Zecwallet.
 
-```python3
+```
  |  addresses()
  |      List current addresses in the wallet
  |  
