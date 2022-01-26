@@ -190,10 +190,13 @@ Once you've instantiated your wallet, you'll have access to all of the following
 >>> from zecwallet.wallet import Wallet
 >>> myWallet = Wallet('/home/ubuntu/ZcashWallet/zecwallet-cli' , 'decryptionKey')
 >>> myWallet.zecPrice()
-{'zec_price': 93.11905232470494, 'fetched_at': 1654321098, 'currency': 'USD'}
+{'zec_price': Decimal('93.12'), 'fetched_at': 1654321098, 'currency': 'USD'}
 >>> myWallet.newShieldedAddress()
 ['zs1tnk62y6sn4mwrwyxrhjxjth6lzlsaggmnkEXAMPLEwsftk760yxrsme44kp997eps0w6z4g7vd9']
 >>> myWallet.save()
 {'result': 'success'}
->>> del myWallet
+>>> myWallet.encryptMessage('zs1d0fx24crh2kuyqs7yp0jf4wswyuEXAMPLE8mgejmf7qev2jnhjhwevhvzgjczcjzptl9xsace80' , 'Hello World!')
+{'encrypted_base64': 'WmNhc2hPZmZsaW5lTWVtSHORTENEDEXAMPLEUi0JRXAleZ4ep2yg=='}
+>>> myWallet.send('zs1d0fx24crh2kuyqs7yp0jf4wswyuEXAMPLE8mgejmf7qev2jnhjhwevhvzgjczcjzptl9xsace80' , 123456 , 'Paying you back for coffee. Thanks again!')
+{'result': 'success'}
 ```

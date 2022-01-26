@@ -93,7 +93,7 @@ class Wallet():
 		Returns the default fee in zats for outgoing transactions
 		'''
 
-		defaultFeeCommand = ('defaultfee ' + blockHeight)
+		defaultFeeCommand = ('defaultfee ' + str(blockHeight))
 		return self.communicate(defaultFeeCommand)
 
 
@@ -129,7 +129,6 @@ class Wallet():
 		NOTE: This command only returns the encrypted payload. It does not broadcast it. You are expected to send the encrypted payload to the recipient offline
 		'''
 
-		memo = memo.replace('"' , '\\"')
 		encryptMessageCommand = ('encryptmessage ' + address + ' "' + memo + '"')
 		return self.communicate(encryptMessageCommand)
 
@@ -171,9 +170,9 @@ class Wallet():
 		'''
 
 		if (noRescan):
-			importCommand = ('import ' + spendingOrViewingKey + ' ' + birthday + ' norescan')
+			importCommand = ('import ' + spendingOrViewingKey + ' ' + str(birthday) + ' norescan')
 		else:
-			importCommand = ('import ' + spendingOrViewingKey + ' ' + birthday)
+			importCommand = ('import ' + spendingOrViewingKey + ' ' + str(birthday))
 		return self.communicate(importCommand)
 
 
@@ -284,7 +283,7 @@ class Wallet():
 		NOTE: The fee required to send this transaction is additionally deducted from your balance.
 		'''
 
-		sendCommand = ('send ' + destinationAddress + ' ' + amountInZatoshis + ' ' + memo)
+		sendCommand = ('send ' + destinationAddress + ' ' + str(amountInZatoshis) + ' "' + memo + '"')
 		return self.communicate(sendCommand)
 
 
