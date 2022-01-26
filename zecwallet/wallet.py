@@ -1,6 +1,6 @@
-from subprocess import PIPE , Popen
 from decimal import Decimal
 from json import loads
+from subprocess import PIPE , Popen
 
 
 
@@ -15,20 +15,6 @@ class Wallet():
 		self._sendCommand('quit')
 		self._sp.stdin.close()
 		self._sp.terminate()
-
-
-	def communicate(self , command):
-		'''
-		Send a custom command directly to zecwallet
-		'''
-
-		for i in range(3):
-			self._sendCommand(command)
-			commandResults = self._fetchResult()
-			if (('error' in commandResults) and (commandResults['error'] == 'Wallet is locked')):
-				self._unlockWallet()
-			else:
-				return commandResults
 
 
 	def addresses(self):
@@ -49,6 +35,20 @@ class Wallet():
 
 		balanceCommand = ('balance')
 		return self.communicate(balanceCommand)
+
+
+	def communicate(self , command):
+		'''
+		Send a custom command directly to zecwallet
+		'''
+
+		for i in range(3):
+			self._sendCommand(command)
+			commandResults = self._fetchResult()
+			if (('error' in commandResults) and (commandResults['error'] == 'Wallet is locked')):
+				self._unlockWallet()
+			else:
+				return commandResults
 
 
 	def clear(self):
@@ -371,7 +371,7 @@ class Wallet():
 					if ((line[0] == '}') or (line[0] == ']')):
 						break
 
-		return loads(loadableOutput)
+		return loads(loadableOutput , parse_float = Decimal)
 
 
 	def _readOutput(self):
