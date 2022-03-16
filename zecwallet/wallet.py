@@ -370,7 +370,7 @@ class Wallet():
 					if ((line[0] == '}') or (line[0] == ']')):
 						break
 
-		return loads(loadableOutput , parse_float = Decimal)
+		return loads(loadableOutput , parse_float = Decimal , parse_int = Decimal)
 
 
 	def _readOutput(self):
