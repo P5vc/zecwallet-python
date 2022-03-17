@@ -55,7 +55,7 @@ Once you've instantiated your wallet, you'll have access to all of the following
  |  addresses()
  |      List current addresses in the wallet
  |
- |  addressBalance(targetAddress, returnCompleteResult=False)
+ |  addressBalance(targetAddress, fullResult=False)
  |      Shows the current ZEC balance of a specific address in the wallet
  |
  |      By default, the transparent address's balance or shielded address's zbalance is returned as a Decimal object.
