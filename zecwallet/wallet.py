@@ -26,11 +26,12 @@ class Wallet():
 		return self.communicate(addressesCommand)
 
 
-	def addressBalance(self , targetAddress):
+	def addressBalance(self , targetAddress , fullResult = False):
 		'''
-		Show the current ZEC balance of a specific address in the wallet
+		Shows the current ZEC balance of a specific address in the wallet
 
-		Transparent balance or Shielded zbalance is returned
+		By default, the transparent address's balance or shielded address's zbalance is returned as a Decimal object.
+		If fullResult == True, a dictionary containing the address's full balance information is returned.
 		'''
 		balanceCommand = ('balance')
 		balances = self.communicate(balanceCommand)
@@ -38,13 +39,19 @@ class Wallet():
 		if (targetAddress[0] == 'z'):
 			for addressInfo in balances['z_addresses']:
 				if (addressInfo['address'] == targetAddress):
-					return addressInfo['zbalance']
+					if (fullResult):
+						return addressInfo
+					else:
+						return addressInfo['zbalance']
 			raise RuntimeError('The provided address was not found.')
 		elif (targetAddress[0] == 't'):
 			for addressInfo in balances['t_addresses']:
 				if (addressInfo['address'] == targetAddress):
-					return addressInfo['balance']
-			raise RuntimeError('The provided address was not found.')
+					if (fullResult):
+						return addressInfo
+					else:
+						return addressInfo['balance']
+			raise RuntimeError('The provided address was not found or is invalid.')
 		else:
 			raise RuntimeError('A valid address was not provided.')
 
